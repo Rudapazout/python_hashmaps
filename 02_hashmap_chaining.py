@@ -8,15 +8,18 @@ class ChainingHashMap:
 
     def hash_function(self, key):
         # TODO: Implementovat hashovací funkci
-        pass
+        return key % self.size
 
     def add(self, key, value):
         # TODO: Přidat prvek s klíčem "key" a hodnotou "value" do hashmapy
-        pass
+        index = self.hash_function(key)
+        key = self.hash_function(value)
+        self.table[index].append((key, value))
 
     def find(self, key):
         # TODO: Najít prvek s klíčem "key" v hashmapě a vrátit jeho hodnotu
-        pass
+        index = self.hash_function(key)
+        
 
 def measure_time(operation, *args):
     start = time.time()

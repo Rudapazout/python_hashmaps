@@ -8,15 +8,26 @@ class OpenAddressingHashMap:
 
     def hash_function(self, key):
         # TODO: Implementovat hashovací funkci
-        pass
-
+       return key % self.size
+    
     def add(self, key, value):
         # TODO: Přidat prvek s klíčem "key" a hodnotou "value" do hashmapy
-        pass
+        index = self.hash_function(key)
+        done=False
+        while(done ==False):
+            if self.table[index]==None:
+                self.table[index].append(key, value)
+                return
+        return
 
     def find(self, key):
         # TODO: Najít prvek s klíčem "key" v hashmapě a vrátit jeho hodnotu
-        pass
+        index = self.hash_function(key)
+        for k in range(self.size):
+            if k == key:
+                return k
+        return None
+
 
 def measure_time(operation, *args):
     start = time.time()
